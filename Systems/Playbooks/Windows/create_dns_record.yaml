@@ -1,0 +1,40 @@
+---
+- name: Manage DNS Records on Windows DNS Server
+  hosts: windows 
+  gather_facts: no
+
+  vars:
+    server_name: "gwy01"
+    domain_name: "bodiddely.internal"
+    ipv4_address: "192.168.10.1"
+
+  tasks:
+    - name: Split the IPv4 Addres into octets
+      set_fact:
+        ipv4_octets: "{{ ipv4_address.split('.') }}"
+
+    - name: Add A record for a server
+      community.windows.win_dns_record:
+        name: "{{ server_name }}"
+        zone: "{{ domain_name }}"
+        type: A
+        value: "{{ ipv4_address }}"
+        state: present
+      register: dns_result
+    
+    - name: Display result of A record addition
+      debug:
+        var: dns_result
+
+    - name: Create matching PTR record
+      community.windows.win_dns_record:
+        name: "{{ ipv4_octets[3]}}"
+        type: "PTR"
+        value: "{{ server_name }}.{{ domain_name }}."
+        zone: "{{ ipv4_octets[2] }}.{{ ipv4_octets[1] }}.{{ ipv4_octets[0] }}.in-addr.arpa"
+        state: present
+      register: dns_result
+
+    - name: Display result of PTR record addition
+      debug:
+        var: dns_result

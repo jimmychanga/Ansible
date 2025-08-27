@@ -1,0 +1,9 @@
+- name: Linux Updates
+  hosts: linux
+  tasks:
+  - name: Update all packages with dnf
+    ansible.builtin.dnf:
+      name: "*"
+      state: latest
+      update_cache: yes
+    become: yes
