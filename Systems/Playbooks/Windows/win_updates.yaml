@@ -1,0 +1,36 @@
+- name: Windows Updates
+  hosts: windows
+  gather_facts: false
+  tasks:
+    - name: Install all updates and reboot as many times as needed
+      ansible.windows.win_updates:
+        category_names: '*'
+        reboot: true
+      register: win_updates_result # Store the result of the task
+
+    - name: Report if a reboot is required
+      ansible.builtin.debug:
+        msg: "Reboot is required for host {{ inventory_hostname }}"
+      when: win_updates_result.reboot_required
+
+    # - name: Search for pending Windows updates
+    # ansible.windows.win_updates:
+    #   category_names: '*'
+    #   state: searched
+    # register: check_win_updates_result
+
+    - name: Display available updates
+      ansible.builtin.debug:
+        msg: "Available updates for {{ inventory_hostname }}: {{ check_win_updates_result.found_update_count }} found."
+      when: win_updates_result.found_update_count > 0
+
+    - name: Print details of available updates
+      debug:
+        msg: "Update: {{ item.title }} (KB: {{ item.kb | default('N/A') }})"
+      loop: "{{ check_win_updates_result.updates.values() }}"
+      when: win_updates_result.found_update_count > 0
+
+    - name: Display message if no updates are found
+      ansible.builtin.debug:
+        msg: "No updates found for {{ inventory_hostname }}."
+      when: win_updates_result.found_update_count == 0
