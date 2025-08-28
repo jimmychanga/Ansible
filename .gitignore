@@ -1,1 +1,4 @@
 .venv/
+.vscode/
+/Scripts/.env
+Scripts/test.py

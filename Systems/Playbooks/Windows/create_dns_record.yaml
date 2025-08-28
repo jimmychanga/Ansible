@@ -9,9 +9,10 @@
     ipv4_address: "192.168.10.1"
 
   tasks:
-    - name: Split the IPv4 Addres into octets
+    - name: Split the IPv4 Address into octets
       set_fact:
         ipv4_octets: "{{ ipv4_address.split('.') }}"
+      no_log: True
 
     - name: Add A record for a server
       community.windows.win_dns_record:
