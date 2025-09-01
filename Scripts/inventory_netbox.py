@@ -1,8 +1,16 @@
 import pynetbox
 import os
+import urllib3
+from dotenv import load_dotenv
+from pathlib import Path
 
-NETBOX_URL = os.getenv('NETBOX_URL', 'https://foxtail.bodiddely.internal')
-NETBOX_TOKEN = os.getenv('NETBOX_TOKEN', 'a9748a500da7bf7acf04ac0499b9f7da1d9f5dc3')
+dotenv_path = Path(__file__).parent / '.env'
+load_dotenv(dotenv_path=dotenv_path)
+
+urllib3.disable_warnings()
+
+NETBOX_URL = os.getenv("NETBOX_URL")
+NETBOX_TOKEN = os.getenv("NETBOX_TOKEN")
 
 try:
     nb = pynetbox.api(NETBOX_URL, token=NETBOX_TOKEN)
