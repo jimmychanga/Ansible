@@ -1,0 +1,5 @@
+---
+- name: Run show version command
+  arista.eos.eos_command:
+    commands: "show version"
+  register: output

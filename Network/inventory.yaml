@@ -1,0 +1,39 @@
+---
+all:
+  children:
+    Labs:
+      children:
+        L3LAB:
+          children:
+            L3LAB_Backbone:
+              hosts:
+                brd01.l3lab:
+                  ansible_host: 10.1.3.10
+            L3LAB_Spines:
+              hosts:
+                sp1.l3lab:
+                  ansible_host: 10.1.3.12
+                sp2.l3lab:
+                  ansible_host: 10.1.3.13
+                sp3.l3lab:
+                  ansible_host: 10.1.3.14
+                sp4.l3lab:
+                  ansible_host: 10.1.3.15
+            L3LAB_Leafs:
+              hosts:
+                lf1.l3lab:
+                  ansible_host: 10.1.3.5
+                lf2.l3lab:
+                  ansible_host: 10.1.3.7
+                lf3.l3lab:
+                  ansible_host: 10.1.3.8
+                lf4.l3lab:
+                  ansible_host: 10.1.3.9
+        POP1:
+          children:
+            POP1_Backbone:
+              hosts:
+                bb01.pop1:
+                  ansible_host: 10.1.3.3
+                bb02.pop1:
+                  ansible_host: 10.1.3.4

@@ -1,0 +1,12 @@
+---
+- name: Use CLI to enable eAPI
+  hosts: all
+  connection: network_cli
+  gather_facts: false
+  tasks:
+    - name: Enable eAPI with HTTP at port 80
+      arista.eos.eos_eapi:
+        state: started
+        http: true
+        http_port: 80
+        

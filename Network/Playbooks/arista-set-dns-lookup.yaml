@@ -1,0 +1,21 @@
+---
+- name: Configure DNS lookup sources and name servers on all devices
+  hosts: arista
+  become: true
+  become_method: ansible.netcommon.enable
+  gather_facts: false
+  connection: network_cli
+  tasks:
+    - name: Configure DNS lookup sources with VRF support
+      arista.eos.eos_system:
+        lookup_source:
+          - interface: Management1
+            vrf: MGMT
+      register: result
+    - name: Configure name servers with VRF support
+      arista.eos.eos_system:
+        name_servers:
+          - {server: 192.168.10.10, vrf: MGMT}
+          - {server: 192.168.10.11, vrf: MGMT}
+        domain_name: bodiddely.internal
+      register: result

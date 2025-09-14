@@ -1,0 +1,9 @@
+---
+ansible_user: admin
+ansible_password: 5tuntK1t3
+ansible_connection: ansible.netcommon.network_cli
+ansible_become: yes
+ansible_become_method: enable
+ansible_become_password: 5tuntK1t3
+ansible_network_cli_ssh_type: auto
+ansible_network_cli_transport: ssh
