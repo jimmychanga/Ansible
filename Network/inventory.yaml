@@ -29,6 +29,10 @@ all:
                   ansible_host: 10.1.3.8
                 lf4.l3lab:
                   ansible_host: 10.1.3.9
+            L3LAB_Management:
+              hosts:
+                mgmt01.l3lab:
+                  ansible_host: 10.1.3.6
         POP1:
           children:
             POP1_Backbone:
@@ -37,3 +41,9 @@ all:
                   ansible_host: 10.1.3.3
                 bb02.pop1:
                   ansible_host: 10.1.3.4
+            POP1_Management:
+              hosts:
+                rtr01.mgmt:
+                  ansible_host: 10.1.3.1
+                swt01.mgmt:
+                  ansible_host: 10.1.3.2  

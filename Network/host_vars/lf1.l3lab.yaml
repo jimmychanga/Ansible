@@ -1,0 +1,15 @@
+hostname: lf1.l3lab
+interfaces:
+  - name: Management1
+    description: mgmt-swt01.l3lab | Ethernet7
+    enabled: true
+    ipv4:
+      address: 10.1.3.5/24
+      enabled: true
+    vrf: MGMT
+  - name: Loopback0
+    description: lf1.l3lab.bodiddely.internal
+    enabled: true
+    ipv4:
+      address: 10.100.1.196/32
+  

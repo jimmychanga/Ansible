@@ -2,4 +2,5 @@
 .vscode/
 /Scripts/.env
 Scripts/test.py
-
+.ansible/.lock
+Scripts/Netbox_oxidized/.env
