@@ -69,7 +69,7 @@ def create_cname_if_primary(ip, dns_session, domain):
                 if cname_status == 0:
                     print(f"Successfully added CNAME record: {device.name}.{domain} -> {ip.dns_name}")
                 else:
-                     print(f"Failed to add CNAME record: {device.name}.{domain} -> {ip.dns_name}")
+                    print(f"Failed to add CNAME record: {device.name}.{domain} -> {ip.dns_name}")
 
 ##########
 # Main function
