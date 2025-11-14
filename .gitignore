@@ -1,7 +1,7 @@
 .venv/
 .vscode/
-__pycache__/
 /Scripts/.env
 Scripts/test.py
 .ansible/.lock
 Scripts/Netbox_oxidized/.env
+Scripts/__pycache__/
