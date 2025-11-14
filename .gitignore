@@ -1,5 +1,6 @@
 .venv/
 .vscode/
+__pycache__/
 /Scripts/.env
 Scripts/test.py
 .ansible/.lock
