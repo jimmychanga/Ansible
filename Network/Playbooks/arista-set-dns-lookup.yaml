@@ -1,6 +1,6 @@
 ---
 - name: Configure DNS lookup sources and name servers on all devices
-  hosts: arista
+  hosts: all
   become: true
   become_method: ansible.netcommon.enable
   gather_facts: false

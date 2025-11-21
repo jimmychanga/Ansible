@@ -1,0 +1,15 @@
+hostname: bb01.pop1
+interfaces:
+  - name: Management1
+    description: bb01.pop1:Management1anagement1 - mgmt-swt01.pop1:gig0/1
+    enabled: true
+    ipv4:
+      address: 10.1.3.3/24
+      enabled: true
+    vrf: MGMT
+  - name: Loopback0
+    description: bb01.pop1.bodiddely.internal
+    enabled: true
+    ipv4:
+      address: 10.100.1.128/32
+      enabled: true
